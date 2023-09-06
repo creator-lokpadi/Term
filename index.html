@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remote Terminal</title>
+</head>
+<body>
+  <div id="terminal"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    const terminalDiv = document.getElementById('terminal');
+    const terminal = new Terminal();
+
+    terminal.open(terminalDiv);
+
+    terminal.onData((data) => {
+      socket.emit('input', data);
+    });
+
+    socket.on('output', (data) => {
+      terminal.write(data);
+    });
+  </script>
+</body>
+</html>
