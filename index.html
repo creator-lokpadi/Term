@@ -9,7 +9,7 @@
   <div id="terminal"></div>
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    const socket = io();
+    const socket = io("https://term-creator-lokpadi.vercel.app");
 
     const terminalDiv = document.getElementById('terminal');
     const terminal = new Terminal();
