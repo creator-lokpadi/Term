@@ -10,6 +10,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div >TEAMCREATORLOKPADI~$ <span contenteditable="true"></span><span id="cursor">▋</span></div>
+    <div >TEAMCREATORLOKPADI~$ <span contenteditable="true" id="commandInput"></span><span id="cursor">▋</span></div>
+    <div id="output"></div> <!-- Tempat untuk menampilkan output -->
+    <script>
+        const commandInput = document.getElementById("commandInput");
+        const outputDiv = document.getElementById("output");
+
+        commandInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                const command = commandInput.innerText;
+
+                // Menggunakan AJAX atau Fetch API untuk mengirim perintah ke server Anda
+                fetch('/execute', {
+                    method: 'POST',
+                    body: command,
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    }
+                })
+                .then(response => response.text())
+                .then(output => {
+                    // Menampilkan output
+                    outputDiv.innerHTML += "<p>" + output + "</p>";
+
+                    // Membersihkan input setelah perintah dijalankan
+                    commandInput.innerText = "";
+                })
+                .catch(error => {
+                    // Menampilkan pesan error jika terjadi masalah
+                    outputDiv.innerHTML += "<p>Error: " + error + "</p>";
+                });
+            }
+        });
+    </script>
 </body>
 </html>
