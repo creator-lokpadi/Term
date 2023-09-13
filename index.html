@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            margin: 0;
+            overflow: hidden;
+        }
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #0ff;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .profile-image {
+            position: relative;
+            border-radius: 50%;
+            width: 150px; /* Ubah lebar foto profil sesuai kebutuhan */
+            height: 150px; /* Ubah tinggi foto profil sesuai kebutuhan */
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 2px solid #0ff;
+        }
+        .audio-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://your-audio-wave-image.png'); /* Ganti URL dengan gambar gelombang audio yang sesuai */
+            background-repeat: repeat-x;
+            background-size: 100% auto;
+            opacity: 0.3;
+            animation: animate-audio-wave 2s linear infinite;
+        }
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .play-button button {
+            background-color: transparent;
+            border: none;
+            font-size: 36px;
+            color: transparent; /* Buat tombol play transparan */
+            cursor: pointer;
+        }
+        .play-button button:focus {
+            outline: none;
+        }
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+        }
+        .profile-info {
+            text-align: center;
+        }
+        .profile-name {
+            font-size: 24px;
+            text-shadow: 0 0 10px #e10000, 0 0 20px #e10000, 0 0 30px #e10000;
+            color: #e10000;
+        }
+        .profile-bio {
+            font-size: 16px;
+            margin-top: 20px;
+            padding: 0 20px;
+            color: #ffffffbf;
+        }
+        .status-online {
+            font-size: 18px;
+            animation: blink 1s linear infinite;
+            margin-top: 20px;
+            color: #29ff00f6;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            text-decoration: none;
+            color: #ffffff;
+            margin: 0 10px;
+            font-size: 24px;
+        }
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes animate-audio-wave {
+            to {
+                background-position: -100% center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="audio" autoplay loop>
+        <source src="./audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <video autoplay muted loop id="background-video">
+        <source src="https://telegra.ph/file/cad06ae326042101dc3f1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="profile-container">
+        <div class="profile-image">
+            <div class="audio-animation"></div>
+            <img src="https://telegra.ph/file/1da2e7a13f866f6503a80.jpg" alt="Profile Picture">
+            <div class="play-button">
+                <button id="play-button">&#9654;</button>
+            </div>
+        </div>
+        <div class="profile-info">
+            <div class="profile-name">Muhammad Andriani</div>
+            <div class="status-online">Online di WhatsApp</div>
+            <div class="profile-bio">
+                <strong>Nama:</strong> Muhammad Andriani<br>
+                <strong>Pekerjaan:</strong> Pengembang dan pemilik TEAMCREATORLOKPADI<br><br>
+
+                <strong>Deskripsi Singkat:</strong><br>
+                Muhammad Andriani adalah pemilik TEAMCREATORLOKPADI. Dengan latar belakang dalam pengembangan chatbot dan solusi berbasis teks, ia berkomitmen untuk meningkatkan pengalaman pengguna melalui inovasi.<br><br>
+
+                <strong>Kontribusi ChatGPT:</strong><br>
+                Dengan dukungan kecerdasan buatan ChatGPT, Muhammad Andriani berhasil menciptakan bot WhatsApp yang inovatif. ChatGPT membantu merespons pertanyaan pengguna WhatsApp dengan akurat.<br><br>
+
+                <strong>Visi:</strong><br>
+                Muhammad Andriani dan timnya di TEAMCREATORLOKPADI memiliki visi untuk terus mengembangkan solusi chatbot yang canggih dan berguna bagi pengguna WhatsApp, menciptakan pengalaman interaksi yang lebih baik antara manusia dan teknologi.<br>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="https://wa.me/6282321720820"><i class="fa fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/muhamad.andriani.56211"><i class="fa fa-facebook"></i></a>
+            <a href="https://instagram.com/creator_lokpadi501?igshid=OGY3MTU3OGY1Mw=="><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <script>
+        var audio = document.getElementById("audio");
+
+        // Autoplay audio on page load
+        audio.play();
+    </script>
+</body>
+</html>
